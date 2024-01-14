@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "181442649055",
+    "firebase_url": "https://adsbancodigital-default-rtdb.firebaseio.com",
+    "project_id": "adsbancodigital",
+    "storage_bucket": "adsbancodigital.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:181442649055:android:87ba8753880fa12fb9c26a",
+        "android_client_info": {
+          "package_name": "com.example.adsbancodigital"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJV-hNSbA0pk9hGKFvlxVAFfGQ5KIOj0g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
