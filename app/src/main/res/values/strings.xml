@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">AdsBancoDigital</string>
+    <string name="nome_nome">Nome</string>
+    <string name="email_m">Email</string>
+    <string name="telefone_t">Telefone</string>
+    <string name="senha_S">Senha</string>
+    <string name="confirma_senha">Confirma senha</string>
 </resources>
