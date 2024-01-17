@@ -124,6 +124,7 @@
                 android:layout_marginTop="16dp"
                 android:textAllCaps="false"
                 android:textSize="20dp"
+                android:onClick="validaDados"
                 android:background="@drawable/bg_btn"
                 android:textColor="@android:color/white"
                 android:text="Criar Conta"/>
