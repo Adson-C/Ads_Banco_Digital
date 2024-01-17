@@ -5,4 +5,7 @@
     <string name="telefone_t">Telefone</string>
     <string name="senha_S">Senha</string>
     <string name="confirma_senha">Confirma senha</string>
+    <string name="criar_conta">Criar conta</string>
+    <string name="recupera_conta">Recupera conta</string>
+    <string name="login_l">Login</string>
 </resources>

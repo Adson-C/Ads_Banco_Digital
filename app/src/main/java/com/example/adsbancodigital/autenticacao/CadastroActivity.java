@@ -2,13 +2,19 @@ package com.example.adsbancodigital.autenticacao;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
+import com.example.adsbancodigital.MainActivity;
 import com.example.adsbancodigital.R;
+import com.example.adsbancodigital.helper.FirebaseHelper;
+import com.example.adsbancodigital.model.Usuario;
+import com.google.firebase.database.DatabaseReference;
 
 public class CadastroActivity extends AppCompatActivity {
 
@@ -116,7 +122,7 @@ public class CadastroActivity extends AppCompatActivity {
         usuarioRef.setValue(usuario).addOnCompleteListener(task -> {
             if (task.isSuccessful()){
                 finish();
-                startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, LoginActivity.class));
             }else {
                 progressBar.setVisibility(View.GONE);
                 Toast.makeText(this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();

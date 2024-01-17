@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.adsbancodigital.autenticacao.CadastroActivity;
+import com.example.adsbancodigital.autenticacao.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         btnapert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), CadastroActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
             }
         });
