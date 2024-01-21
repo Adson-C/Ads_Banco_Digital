@@ -8,4 +8,6 @@
     <string name="criar_conta">Criar conta</string>
     <string name="recupera_conta">Recupera conta</string>
     <string name="login_l">Login</string>
+    <string name="receber_email">Receber Email</string>
+    <string name="descri_ema">Digite seu e-mail que enviaremos um link para você alterar sua senha.</string>
 </resources>

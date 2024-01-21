@@ -13,6 +13,9 @@
         android:theme="@style/Theme.AdsBancoDigital"
         tools:targetApi="31">
         <activity
+            android:name=".autenticacao.RecuperarContaActivity"
+            android:exported="false" />
+        <activity
             android:name=".autenticacao.LoginActivity"
             android:exported="false" />
         <activity

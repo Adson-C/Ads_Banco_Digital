@@ -73,6 +73,10 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(new Intent(this, CadastroActivity.class));
     }
 
+    public void recuperarConta(View view){
+        startActivity(new Intent(this, RecuperarContaActivity.class));
+    }
+
     private void iniciaComponentes() {
         edtEmail = findViewById(R.id.edtEmail);
         edtSenha = findViewById(R.id.edtSenha);
