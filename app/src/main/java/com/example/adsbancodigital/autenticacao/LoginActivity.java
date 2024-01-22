@@ -2,17 +2,15 @@ package com.example.adsbancodigital.autenticacao;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.adsbancodigital.MainActivity;
+import com.example.adsbancodigital.App.MainActivity;
 import com.example.adsbancodigital.R;
 import com.example.adsbancodigital.helper.FirebaseHelper;
 

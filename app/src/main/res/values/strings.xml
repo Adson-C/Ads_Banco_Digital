@@ -10,4 +10,10 @@
     <string name="login_l">Login</string>
     <string name="receber_email">Receber Email</string>
     <string name="descri_ema">Digite seu e-mail que enviaremos um link para você alterar sua senha.</string>
+    <string name="recarga_de_celular">Recarga de celular</string>
+    <string name="transferir">Transferir</string>
+    <string name="extrato">Extrato</string>
+    <string name="sair">Sair</string>
+    <string name="minha_conta">Minha Conta</string>
+    <string name="receber">Receber</string>
 </resources>
