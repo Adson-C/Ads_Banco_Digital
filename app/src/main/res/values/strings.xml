@@ -16,4 +16,6 @@
     <string name="sair">Sair</string>
     <string name="minha_conta">Minha Conta</string>
     <string name="receber">Receber</string>
+    <string name="titulo">Titulo</string>
+    <string name="confirmar">Confirmar</string>
 </resources>

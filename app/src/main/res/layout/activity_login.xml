@@ -7,6 +7,8 @@
     android:background="#03353C"
     tools:context=".autenticacao.LoginActivity">
 
+    <include layout="@layout/toobar_padrao"/>
+
     <ScrollView
         android:id="@+id/scrollView3"
         android:layout_width="0dp"

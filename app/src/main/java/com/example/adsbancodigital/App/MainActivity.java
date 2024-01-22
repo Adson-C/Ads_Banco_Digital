@@ -11,6 +11,7 @@ import android.widget.Button;
 import com.example.adsbancodigital.R;
 import com.example.adsbancodigital.autenticacao.CadastroActivity;
 import com.example.adsbancodigital.autenticacao.LoginActivity;
+import com.example.adsbancodigital.deposito.DepositoActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,5 +22,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        configClique();
+
+    }
+
+    private void configClique() {
+        findViewById(R.id.cardDeposito).setOnClickListener(v -> {
+            startActivity(new Intent(this, DepositoActivity.class));
+        });
     }
 }

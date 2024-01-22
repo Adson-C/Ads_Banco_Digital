@@ -13,26 +13,22 @@
         android:theme="@style/Theme.AdsBancoDigital"
         tools:targetApi="31">
         <activity
+            android:name=".deposito.DepositoActivity"
+            android:exported="false" />
+        <activity
             android:name=".App.SplashActivity"
-            android:theme="@style/Base.Theme.Splash"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Base.Theme.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-
-        <activity
-            android:name=".autenticacao.RecuperarContaActivity" />
-        <activity
-            android:name=".autenticacao.LoginActivity" />
-        <activity
-            android:name=".autenticacao.CadastroActivity" />
-        <activity
-            android:name=".App.MainActivity" />
+        <activity android:name=".autenticacao.RecuperarContaActivity" />
+        <activity android:name=".autenticacao.LoginActivity" />
+        <activity android:name=".autenticacao.CadastroActivity" />
+        <activity android:name=".App.MainActivity" />
     </application>
 
 </manifest>
