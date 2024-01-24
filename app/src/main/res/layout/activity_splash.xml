@@ -4,16 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_editado"
+    android:background="#F2F3F2"
     tools:context=".App.SplashActivity">
 
     <ImageView
-        android:layout_width="180dp"
-        android:layout_height="180dp"
+        android:layout_width="278dp"
+        android:layout_height="365dp"
         android:src="@drawable/ic_money"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
