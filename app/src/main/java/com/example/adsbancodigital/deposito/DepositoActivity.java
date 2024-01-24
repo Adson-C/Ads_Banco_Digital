@@ -1,5 +1,6 @@
 package com.example.adsbancodigital.deposito;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +17,15 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.adsbancodigital.R;
+import com.example.adsbancodigital.helper.FirebaseHelper;
+import com.example.adsbancodigital.model.Deposito;
+import com.example.adsbancodigital.model.Extrato;
+import com.example.adsbancodigital.model.Usuario;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ServerValue;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Locale;
 
@@ -24,6 +34,7 @@ public class DepositoActivity extends AppCompatActivity {
     private EditText edValor;
     private AlertDialog dialog;
     private ProgressBar progressBar;
+    private Usuario usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +42,7 @@ public class DepositoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_deposito);
         
         configToobar();
+        recuperarUsuario();
 
         inciaComponente();
 
@@ -44,9 +56,12 @@ public class DepositoActivity extends AppCompatActivity {
             ocultarTecaldo();
             progressBar.setVisibility(View.VISIBLE);
             // Salvar Extrato
+            salvarExtrato(valorDeposito);
 
         }else {
-            showDialog();
+
+           showDialog("Digite um valor maior que 0.");
+
         }
     }*/
 
@@ -57,7 +72,7 @@ public class DepositoActivity extends AppCompatActivity {
                 inputMethodManager.HIDE_NOT_ALWAYS);
     }
 
-    private void showDialog(){
+    private void showDialog(String msg){
         AlertDialog.Builder builder = new AlertDialog.Builder(
                 this, R.style.Base_Theme_customAlertDialog
         );
@@ -69,7 +84,8 @@ public class DepositoActivity extends AppCompatActivity {
 
 
         TextView messagem = view.findViewById(R.id.textMessagem);
-        messagem.setText("Digite um valor maior que 0.");
+        messagem.setText(msg);
+
 
         Button btnOk = view.findViewById(R.id.btnOk);
         btnOk.setOnClickListener(v -> dialog.dismiss());
@@ -78,6 +94,84 @@ public class DepositoActivity extends AppCompatActivity {
 
         dialog = builder.create();
         dialog.show();
+    }
+
+    // Salvar extratos
+    private void salvarExtrato(double valorDeposito){
+        Extrato extrato = new Extrato();
+        extrato.setOperacao("DEPOSITO");
+        extrato.setValor(valorDeposito);
+        extrato.setOperacao("ENTRADA");
+
+        DatabaseReference extratoReference = FirebaseHelper.getDatabaseReference()
+                .child("extratos")
+                .child(FirebaseHelper.getIdFirebase())
+                .child(extrato.getId());
+        extratoReference.setValue(extrato).addOnCompleteListener(task -> {
+            if (task.isSuccessful()){
+
+                DatabaseReference updateExtrato = extratoReference
+                        .child("data");
+                updateExtrato.setValue(ServerValue.TIMESTAMP);
+
+                salvarDeposito(extrato);
+
+            }else {
+
+                showDialog("Não foi possével efetuar o deposito, tente mais tarde.");
+
+            }
+        });
+
+    }
+
+    private void recuperarUsuario(){
+        DatabaseReference usuarioReference =  FirebaseHelper.getDatabaseReference()
+                .child("usuarios")
+                .child(FirebaseHelper.getIdFirebase());
+        usuarioReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                usuario = snapshot.getValue(Usuario.class);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void salvarDeposito(Extrato extrato) {
+        Deposito deposito = new Deposito();
+        deposito.setId(extrato.getId());
+        deposito.setValor(extrato.getValor());
+
+        DatabaseReference deposiReference = FirebaseHelper.getDatabaseReference()
+                .child("depositos")
+                .child(deposito.getId());
+
+        deposiReference.setValue(deposito).addOnCompleteListener(task -> {
+            if (task.isSuccessful()){
+
+                DatabaseReference updateDeposito = deposiReference
+                        .child("data");
+                updateDeposito.setValue(ServerValue.TIMESTAMP);
+
+                usuario.setSaldo(usuario.getSaldo() + deposito.getValor());
+                usuario.atualizarSaldo();
+
+//                startActivity(new Intent(this, DepositoReciboActivity.class));
+
+            }else {
+                progressBar.setVisibility(View.GONE);
+                showDialog("Não foi possével efetuar o deposito, tente mais tarde.");
+
+            }
+        });
+
     }
 
     private void inciaComponente() {

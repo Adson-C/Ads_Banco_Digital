@@ -1,5 +1,7 @@
 package com.example.adsbancodigital.model;
 
+import com.example.adsbancodigital.helper.FirebaseHelper;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
 
 public class Usuario {
@@ -14,7 +16,15 @@ public class Usuario {
 
 
     public Usuario(){
+    }
 
+    public void atualizarSaldo(){
+
+        DatabaseReference usuarioReference =  FirebaseHelper.getDatabaseReference()
+                .child("usuarios")
+                .child(getId())
+                .child("Saldo");
+        usuarioReference.setValue(getSaldo());
     }
 
     public String getId() {
